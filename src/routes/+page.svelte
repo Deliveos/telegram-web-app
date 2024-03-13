@@ -2,6 +2,7 @@
 	import Counter from './Counter.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
+    import Item from '$lib/components/Item.svelte';
 </script>
 
 <svelte:head>
@@ -10,50 +11,51 @@
 </svelte:head>
 
 <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
+	<h1>Create your first character</h1>
+	<div class="character-editor">
+		<Item><div class="character">1</div></Item>
+		<div class="character-editor_types">
+			<Item><div class="card"><Counter/></div></Item>
+			<Item><div class="card"></div></Item>
+			<Item><div class="card"></div></Item>
+			<Item><div class="card"></div></Item>
+		</div>
+	</div>
 </section>
 
 <style>
 	section {
+		background-color: var(--tg-theme-bg-color);
+		color: var(--tg-theme-text-color);
+		width: 100vw;
+		height: 100vh;
+		padding-right: 10%;
+		padding-left: 10%;
 		display: flex;
-		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		flex: 0.6;
+		flex-direction: column;
 	}
 
-	h1 {
-		width: 100%;
+	.card {
+		width: 20vw;
+		height: 20vw;
 	}
 
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
+	.character {
+		width: 60vw;
 	}
 
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	.character-editor {
+		padding-left: 10%;
+		padding-right: 10%;
+		display: flex;
+		gap: 20px;
+	}
+
+	.character-editor_types {
+		display: flex;
+		gap: 20px;
+		flex-direction: column;
 	}
 </style>
